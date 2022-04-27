@@ -1,0 +1,75 @@
+header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 10px 10%;
+
+    div {
+        @include flexBox(space-between);
+        flex-direction: row; 
+        color: $white;
+
+        @include mobile {
+            flex-direction: column;
+
+            #block-adchallenge-branding, .site-slogan {
+                flex-direction: row;
+            }
+        }
+        
+        .site-slogan {
+            padding-left: 10px;
+            font-size: 24px;
+            line-height: 28px;
+            font-weight: weight(light);
+        }
+        img {
+            max-height: 40px;
+        }
+    }
+
+
+    ul {
+        text-transform:uppercase;
+        letter-spacing: 1px;
+
+        @include mobile {
+          padding-right: 0;
+        }
+
+        li {
+            display: inline-block;
+            position: relative;
+
+                a {
+                    text-decoration: none;
+                    color: $white;
+                    @extend p;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        transform: scaleX(0);
+                        height: 2px;
+                        bottom: 0;
+                        left: 0;
+                        background-color: $blue;
+                        transform-origin: bottom right;
+                        transition: transform 0.25s ease-out;
+                    }
+
+                    &:hover:after {
+                        transform: scaleX(1);
+                        transform-origin: bottom left;
+                    }
+                }
+            }  
+        }
+    }
+
+.menu-item {
+    margin-right: 20px!important;
+}
+

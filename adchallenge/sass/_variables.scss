@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap');
+
+$red:#FF5252;
+$blue:#0097A7;
+$dark-blue:#161E21;
+$white:#fff;
+$black:#101010;
+$light-grey:#D4D4D4;
+$medium-grey:#949494;
+
+$font-weights: (
+    "thin": 100,
+    "light": 300,
+    "regular":400,
+    "medium":500,
+    "bold":900,
+);
+
+@function weight($weight-name) {
+    @return map-get($font-weights, $weight-name );
+}
+
+/* font */
+
+$headingSizes: (64px, 36px, 24px, 24px);
+$headingWeights: (weight(thin), weight(light), weight(medium), weight(light));
+$headingTransforms: (none, uppercase, none, none);
+$headingLineHeights: (75px, 42px, 24px, 28px);
+
+@for $i from 1 through 4 {
+	h#{$i} {
+    font-size:      nth($headingSizes, $i);
+    font-weight:    nth($headingWeights, $i);
+    text-transform: nth($headingTransforms, $i);
+    line-height:    nth($headingLineHeights, $i);
+    color:          $white;
+	}
+}
+
+h2 {
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 15px;
+    position: relative;
+    margin-bottom: 30px;  
+  
+    &:before{
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 1px;
+        bottom: 0;
+        border-bottom: 1px solid $blue;
+    }
+}
+
+ h3 {
+     margin: 5px 0;
+        a {
+        @extend h3;
+        text-decoration: none;
+    }
+}
+
+h4 {
+    padding-bottom: 30px;
+    border-bottom: 1px solid $white;
+    width: 67%;
+    margin: 0 auto;
+}
+
+p {
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: weight(regular);
+    color: $medium-grey;
+}
+
+strong {
+    font-weight: weight(bold);
+}
+ 
+@mixin section($bg-color) {
+    background-color:($bg-color);
+    padding: 8% 10%;      
+}
+
+@mixin flexBox ($justifyContent) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: center;
+}
+
+@mixin arrow ($color) {
+    color: $color;
+    display: inline-block;
+    position: absolute;
+    padding-top: 5px;
+    content: ' \02C6';
+    font-size: 30px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);    
+}
+
+@mixin mobile {
+    @media (max-width: 800px) {
+        @content;
+    }
+}
